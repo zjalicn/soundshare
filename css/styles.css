@@ -1,0 +1,46 @@
+body {
+    padding: 0 60px;
+}
+
+.jumbotron {
+    margin: auto;
+    width:90%;
+    background-image: url("../images/jumbotron.png");
+}
+
+.navbar {
+    width:100%;
+}
+
+.jumbotron .container{
+    background-color: lightblue;
+    padding: 20px;
+    width: 33%;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.container {
+    margin: auto;
+}
+
+.dashboard {
+    background-color: lightblue;
+    padding: 10px;
+    margin: auto;
+}
+
+.dashboard-col {
+    padding: 10px;
+    margin: 10px;
+    background-color: azure;
+}
+
+.centered {
+    margin: auto;
+}
+
+.text-centered{
+    text-align: center;
+}
+
