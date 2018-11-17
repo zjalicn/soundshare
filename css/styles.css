@@ -2,9 +2,9 @@ body {
     padding: 0 60px;
 }
 
-.jumbotron {
-    margin: auto;
-    width:90%;
+.jumbotronn {
+    margin: 0 auto;
+    width:70%;
     background-image: url("../images/jumbotron.png");
 }
 
@@ -44,3 +44,11 @@ body {
     text-align: center;
 }
 
+.form-group{
+    
+}
+.form-group *{
+    position: relative;
+    padding:2px;
+    margin: 10px auto;
+}

@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <?php 
-    require('header.php');
-  ?>
-</head>
-<body>
-<?php require("navbar.php");?>
+<?php require('header.php');?>
 
+<main>
 <div class="container">
     <div class="row dashboard ">
         <div class="col col-lg-7 dashboard-col">
@@ -38,7 +31,7 @@
         <div class="col col-lg-4 centered" style="text-align:center">
             <div class="row">
                 <div class="col dashboard-col">
-                    <p>Welcome <?php echo $_SESSION['username'] ?></p>
+                    <h5>Welcome <?php echo ucfirst($_SESSION['username']) ?>!</h5>
                     <p style="font-size:10px"><?php
                     date_default_timezone_set('EST');
                     echo date('h:i:s l F jS Y e');?></p>
@@ -46,11 +39,11 @@
             </div>
             <div class="row">
                 <div class="col dashboard-col">
-                    <p>Filter By Tag</p>
-                    <?php 
-                        echo '<p id="tag" style="display:inline"> tag</p>
-                            <p id="tag" style="display:inline"> tag</p>
-                            <p id="tag" style="display:inline"> tag</p>';  
+                    <h5>Filter By Tag</h5>
+                    <?php
+                        for ($i=0; $i<10; $i++) 
+                            echo '<input type="checkbox" style="display:inline; margin:5px" name="tag'.$i.'"/>
+                                    <label for="tag'.$i.'">'.'Tag'.$i.'</label>';
                     ?>
                 </div>
             </div>
@@ -64,5 +57,6 @@
         </div>
     </div>
 </div>
+</main>
 
 <?php require('footer.php') ?>

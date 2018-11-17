@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <?php 
-    require('header.php');
-  ?>
-</head>
-<body>
-<?php require("navbar.php");?>
+<?php require('header.php');?>
 
+<main>
 <div class="container">
     <div class="row dashboard ">
         <div class="col col-lg-7 dashboard-col">
@@ -27,5 +20,6 @@
         </div>
     </div>
 </div>
+</main>
 
 <?php require('footer.php') ?>

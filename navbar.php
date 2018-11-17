@@ -1,27 +1,19 @@
 <?php
   include 'php-pre55-password-hash-utils.php';
+
   function authenticate(){ //auth via db
+    require("connect-db.php");
     $username = $_POST['username'];
     $password = $_POST['password'];
-    require("connect-db.php");
-
-    $sql = "SELECT password FROM accounts WHERE accounts.username = '$username' LIMIT 1;";
+    
+    $sql = "SELECT username,password FROM accounts WHERE accounts.username = '$username' AND accounts.password = '$password' LIMIT 1;";
     $result = mysqli_query($mysqli, $sql);
     $resultCheck = mysqli_num_rows($result);
-    /*if ($resultCheck > 0){
-      while ($row = mysqli_fetch_assoc($result)){
-        echo $row['username'];
-      }
-    }*/
-    $sql = "SELECT 1 FROM accounts WHERE accounts.username = '$username' LIMIT 1;";
-
-    if ((mysqli_query($mysqli, $sql)) ){
-      //if (password_verify($password, $password)){ //change second to dbpassword && mysqli_num_rows(mysqli_query($mysqli, $sql)) != 0)
+    if ($resultCheck > 0){
       return true;
-      //}
     }
+    //echo '<script type="text/javascript">document.getElementById("login_error").style.display = "block";</script>';
     return false; 
-    echo '<script type="text/javascript">document.getElementById("login_error").style.display = "block";</script>';
   }
 
   if (isset($_POST['submit'])){ //on form submit, authenticate, call login if true , $_POST['password']
@@ -30,7 +22,7 @@
       header("Location: logged-in.php"); 
     }
   }
-  if (isset($_POST['logout'])){ //on form submit, authenticate, call login if true
+  if (isset($_POST['logout'])){ //user has logged out, reset session username so pages cant be accessed
     $_SESSION['username'] = "";
     header("Location: index.php"); 
   }
@@ -51,7 +43,7 @@
             if ($_SESSION['username']==""){ //not logged in
               $navbar = <<<EOD
                         <!--LOGIN FORM-->
-                        <form method="post" class="navbar-right" action="">
+                        <form method="post" class="navbar-right">
                           <input type="text" name="username" placeholder="Username" required>
                           <input type="password" name="password" placeholder="Password" required>
                           <button type="submit" name="submit" class="btn-sml btn-primary">Sign in</button>
