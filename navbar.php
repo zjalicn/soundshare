@@ -2,6 +2,7 @@
   include 'php-pre55-password-hash-utils.php';
 
   function authenticate(){ //auth via db
+    return true; //DELETE THIS LATER TO ACTIVATE AUTHORIZATION AGAIN
     require("connect-db.php");
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -57,7 +58,7 @@ EOD;
                           <button type="logout" name="logout" class="btn-sml btn-primary">Log Out</button>
                         </form>';
             }
-            echo $navbar;
+            echo $navbar; // output the navbar we just created
             
           ?>
         </div><!--/.navbar-collapse -->

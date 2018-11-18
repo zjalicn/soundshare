@@ -1,49 +1,102 @@
 <?php require('header.php');?>
 
+<?php
+
+     function upload(){
+        require("connect-db.php");
+        $id = mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM sounds"));
+        $file = $_FILES['uploadfile']['name'];
+        $filename = $_POST['filename'];
+        $type = $_POST['type'];
+        $genre = $_POST['genre'];
+        $username = $_SESSION['username'];
+        $tags = $_POST['tags'];
+        
+        // File upload path
+        $fileName = basename($_FILES['uploadfile']['name']);
+        $targetFilePath = './sounds/' . $fileName;
+        $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+       
+        
+        //if we have time make it check so that files being saved to the server dont share names
+        if(in_array($fileType,array('mp3','wav'))){// Upload file to server
+            if(move_uploaded_file($_FILES["uploadfile"]["tmp_name"], $targetFilePath)){
+                // Insert
+                $sql = "
+                INSERT INTO sounds(id, name, type, genre, tags, timestamp, username, file) 
+                VALUES ('".++$id."', '$filename', '$type', '$genre', '$tags', CURRENT_TIMESTAMP, '$username', '$file')";
+                //echo $sql;
+                if(mysqli_query($mysqli, $sql)){
+                    $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
+                }else{
+                    $statusMsg = "File upload failed, please try again.";
+                } 
+            }else{
+                $statusMsg = "Sorry, there was an error uploading your file."; //File upload failed, please try again.
+            }
+        }else{
+            $statusMsg = 'Sorry, only MP3 and WAV files are allowed to upload.';
+        }
+        echo $statusMsg;
+        /*
+        if (mysqli_query($mysqli, $sql){
+            echo 'ay';
+        } else{
+            echo 'nope';
+        }*/
+    }
+
+    if (isset($_POST['upload'])){
+        upload();
+    }
+
+?>
+
 <main>
 <div class="container">
     <div class="row dashboard ">
         <div class="col col-lg-7 dashboard-col">
-        <img src="./images/waveform.png" style="width:90px; margin: auto"/>
+        <img src="./images/waveform.png" style="width:90px; margin: 0 auto;"/>
         <div class="form-group" >
-            
-            <form method="post" enctype="multipart/form-data" style="width:60%; text-align:center; display: inline">
-                <p>Select sound to upload and fill out the meta data:</p>
+            <form method="post" style="width:60%; display: inline" enctype="multipart/form-data">
+                <p>Select sound to upload and fill out the meta data:
+                <span style="font-size:10px">(Max 16mb, .mp3 and .wav only)</span></p>
 
-                <input type="file" name="uploadfile" id="fileToUpload"/> <br/>
+                <input type="file" name="uploadfile"/> <br/> <!--req -->
                 
                 <label for="filename">File Name:</label>
-                <input type="text" name="filename" placeholder="File name"/> <br/>
+                <input type="text" name="filename" placeholder="File name" /> <br/> <!--req -->
 
                 <label for="filename">Type:</label>
-                <select name="soundtype">
-                    <option value="">Drum</option>
-                    <option value="">Synth</option>
-                    <option value="">Fx</option>
-                    <option value="">Vocal</option>
-                    <option value="">Loop</option>
-                    <option value="">Bass</option>
+                <select name="type">
+                    <option value="Drum">Drum</option>
+                    <option value="Synth">Synth</option>
+                    <option value="Fx">Fx</option>
+                    <option value="Vocal">Vocal</option>
+                    <option value="Loop">Loop</option>
+                    <option value="Bass">Bass</option>
                 </select> <br/>
 
                 <label for="filename">Genre:</label>
-                <input type="text" name="genre" placeholder="Genre"/> <br/>
+                <input type="text" name="genre" placeholder="Genre"/> <br/> <!--req -->
 
-                <textarea rows="4" cols="50" name="tags" maxlength="30" placeholder="Tags: (max length 30 chars)"></textarea>
+                <label for="tags">Tags:</label>
+                <input type="text" name="tags" maxlength="30" placeholder="(max length 30 chars)"></textarea>
                 <br/>
 
-                <input type="submit" value="Upload Sound" name="submit"/>
+                <button type="upload" name="upload" class="btn-sml btn-primary">Upload</button>
             </form></div>
         </div>
 
         <div class="col col-lg-4 centered" style="text-align:center">
             <div class="row">
                 <div class="col dashboard-col">
-                    write in meta data fields here
+                    im gonna make a fetch_tags function that grabs every tag of every sound, tokenizes it
+                    and put each tag in a little box/bubble which u can click on to add it to the tags text box
                 </div>
             </div>
             <div class="row">
                 <div class="col dashboard-col">
-                    confirm button here
                 </div>
             </div>
         </div>

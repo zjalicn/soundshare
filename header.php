@@ -15,18 +15,18 @@
     <link href="./css/ie10-viewport-bug-workaround.css" rel="stylesheet">
     <link href="jumbotron.css" rel="stylesheet">
     <script src="./js/ie-emulation-modes-warning.js"></script>
-
     <?php session_start(); ?>
 </head>
 <body>
 <header>
-    <?php require("navbar.php"); ?>
-    <?php
+    <?php 
+    require("navbar.php");
 
-    if ($_SESSION['username']=="" && 
-    !(in_array($_SERVER["SCRIPT_NAME"], array('/soundshare/index.php','/soundshare/signup.php')))){
+    //echo $_SERVER["SCRIPT_NAME"];
+    if ($_SESSION['username']=="" && //ill clean this up a bit its just while im working on localhost & myweb, urls are slightly different
+    !(in_array($_SERVER["SCRIPT_NAME"], array('/soundshare/index.php','/index.php','/soundshare/signup.php','/signup.php')))){
         header("Location: index.php");
-    }
+    } 
     ?>
 </header>
 
