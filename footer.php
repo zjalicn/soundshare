@@ -2,6 +2,14 @@
 
       <footer>
         <p>&copy; uWindsor 2018</p>
+        INDEX - error for incorrect log in <br/>
+        SIGN UP - proper errors, successful sign up/redirect page  <br/>
+        <span style="color:green">LOGGED IN</span><br/>
+        BROWSE SOUND BANKS - need to make this whole page<br/>
+        UPLOAD SOUNDS - styling, sounds are capped to 4mb only as well so they glitch<br/>
+        ACCOUNT SETTINGS - change password<br/>
+        CREATE NEW SOUNDBANK - whole page<br/>
+        COLLAB - whole page<br/>
       </footer>
     </div> <!-- /container -->
 
@@ -12,7 +20,5 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="./js/vendor/jquery.min.js"><\/script>')</script>
     <script src="./js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="./js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>

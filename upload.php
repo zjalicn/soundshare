@@ -10,7 +10,7 @@
         $type = $_POST['type'];
         $genre = $_POST['genre'];
         $username = $_SESSION['username'];
-        $tags = $_POST['tags'];
+        $tags = str_replace(","," ",$_POST['tags']); //removes all commas and replaces it with spaces
         
         // File upload path
         $fileName = basename($_FILES['uploadfile']['name']);
@@ -46,6 +46,8 @@
         }*/
     }
 
+    include('fetch-tags.php');
+
     if (isset($_POST['upload'])){
         upload();
     }
@@ -54,7 +56,7 @@
 
 <main>
 <div class="container">
-    <div class="row dashboard ">
+    <div class="row dashboard" >
         <div class="col col-lg-7 dashboard-col">
         <img src="./images/waveform.png" style="width:90px; margin: 0 auto;"/>
         <div class="form-group" >
@@ -91,12 +93,12 @@
         <div class="col col-lg-4 centered" style="text-align:center">
             <div class="row">
                 <div class="col dashboard-col">
-                    im gonna make a fetch_tags function that grabs every tag of every sound, tokenizes it
-                    and put each tag in a little box/bubble which u can click on to add it to the tags text box
-                </div>
-            </div>
-            <div class="row">
-                <div class="col dashboard-col">
+                    <h5>Tags:</h5>
+                   <div class="row tagsDiv" id="tagsDiv">
+                        <?php 
+                        fetch_tags(); 
+                        ?>
+                    </div>
                 </div>
             </div>
         </div>
