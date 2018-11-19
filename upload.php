@@ -1,5 +1,11 @@
 <?php require('header.php');?>
 
+<style>
+form * {
+    display:table-cell;
+}
+</style>
+
 <?php
 
      function upload(){

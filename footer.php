@@ -2,9 +2,7 @@
 
       <footer>
         <p>&copy; uWindsor 2018</p>
-        INDEX - error for incorrect log in <br/>
         SIGN UP - proper errors, successful sign up/redirect page  <br/>
-        <span style="color:green">LOGGED IN</span><br/>
         BROWSE SOUND BANKS - need to make this whole page<br/>
         UPLOAD SOUNDS - styling, sounds are capped to 4mb only as well so they glitch<br/>
         ACCOUNT SETTINGS - change password<br/>

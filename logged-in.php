@@ -132,6 +132,7 @@ require_once 'connect-db.php';
                 <div class="col dashboard-col">
                     <p><a href="upload.php">Upload</a></p>
                     <p><a href="create-new-soundbank.php">Create New Soundbank</a></p>
+                    <p><a href="browse-soundbanks.php">Browse Soundbanks</a></p>
                     <p><a href="collaborate.php">Collaborate</a></p>
                 </div>
             </div>

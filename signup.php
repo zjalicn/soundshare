@@ -5,9 +5,8 @@
 
 <form method="post" name="sign-up" style="border:1px solid #ccc">
   <div class="container form">
-    <h1>Sign Up</h1>
-    <p>Please fill in this form to create an account.</p>
-    <hr>
+    <h1>Sign Up</h1><br/>
+    <p>Please fill in this form to create an account.</p><br/>
 
     <label for="username"><b>Username</b></label>
     <input type="text" placeholder="Enter Username" name="su-username" required>
@@ -24,6 +23,7 @@
       <a href="index.php"><button type="button" class="cancelbtn">Cancel</button></a>
       <button type="signup" name="signup" class="signupbtn">Sign Up</button>
     </div>
+    
   </div>
 </form>
 

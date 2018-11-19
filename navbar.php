@@ -7,12 +7,12 @@
     $password = $_POST['password'];
     
     $sql = "SELECT username,password FROM accounts WHERE accounts.username = '$username' AND accounts.password = '$password' LIMIT 1;";
-    $result = mysqli_query($mysqli, $sql);
-    $resultCheck = mysqli_num_rows($result);
-    if ($resultCheck > 0){
-      return true;
+    if ($result = mysqli_query($mysqli, $sql)){
+      $resultCheck = mysqli_num_rows($result);
+      if ($resultCheck > 0){
+        return true;
+      }
     }
-    //echo '<script type="text/javascript">document.getElementById("login_error").style.display = "block";</script>';
     return false; 
   }
 
@@ -44,6 +44,7 @@
               $navbar = <<<EOD
                         <!--LOGIN FORM-->
                         <form method="post" class="navbar-right">
+                          <p style="color:red; font-size:10px; display:none " id="login-error">Incorrect Username or Password</p>
                           <input type="text" name="username" placeholder="Username" required>
                           <input type="password" name="password" placeholder="Password" required>
                           <button type="submit" name="submit" class="btn-sml btn-primary">Sign in</button>
