@@ -1,13 +1,7 @@
 <hr>
 
       <footer>
-        <p>&copy; uWindsor 2018</p>
-        SIGN UP - proper errors, successful sign up/redirect page  <br/>
-        BROWSE SOUND BANKS - need to make this whole page<br/>
-        UPLOAD SOUNDS - styling, sounds are capped to 4mb only as well so they glitch<br/>
-        ACCOUNT SETTINGS - change password<br/>
-        CREATE NEW SOUNDBANK - whole page<br/>
-        COLLAB - whole page<br/>
+        <p>&copy; SoundShare 2018</p>
       </footer>
     </div> <!-- /container -->
 

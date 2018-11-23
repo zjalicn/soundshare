@@ -36,8 +36,6 @@ require_once 'connect-db.php';
                     } else { echo "Database cannot be loaded at this current time";}
                     ?>
                 </tbody>
-                <tbody id="searchtags">
-                </tbody>
             </table>
         </div>
         <div class="col col-lg-4 centered" style="text-align:center">
