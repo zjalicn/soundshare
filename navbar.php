@@ -13,6 +13,8 @@
         return true;
       }
     }
+    echo '<script type="text/javascript">alert("' . "Invalid Credentials". '")</script>';
+
     return false; 
   }
 

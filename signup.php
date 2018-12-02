@@ -32,6 +32,8 @@
 
 
 <?php
+ini_set('display_errors', 1);
+
 if (isset($_POST['signup'])){
 
   require('connect-db.php');
@@ -45,7 +47,10 @@ if (isset($_POST['signup'])){
   if ((mysqli_query($mysqli, $sql)) ){
     header('Location: index.php');
     return true;
-  } else {echo 'nope' . '<br/>'. "INSERT INTO accounts(username, password, name, email) VALUES('$username','$password','$name','$email')";}
+}
+else{
+    echo '<script type="text/javascript">alert("' . "Username already exists". '")</script>';
+}
   //echo '<script type="text/javascript">document.getElementById("login_error").style.display = "block";</script>';
 }
 ?>

@@ -26,8 +26,8 @@ form * {
             if(move_uploaded_file($_FILES["uploadfile"]["tmp_name"], $targetFilePath)){
                 // Insert
                 $sql = "
-                INSERT INTO sounds(id, name, type, genre, tags, timestamp, username, file) 
-                VALUES ('".++$id."', '$filename', '$type', '$genre', '$tags', CURRENT_TIMESTAMP, '$username', '$file')";
+                INSERT INTO sounds(id, name, type, genre, tags, timestamp, username, file, banks) 
+                VALUES ('".++$id."', '$filename', '$type', '$genre', '$tags', CURRENT_TIMESTAMP, '$username', '$file', '$banks')";
                 //echo $sql;
                 if(mysqli_query($mysqli, $sql)){
                     $statusMsg = "The file ".$fileName. " has been uploaded successfully.";

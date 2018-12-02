@@ -4,6 +4,8 @@ function authenticate(){ //auth via db
     $password = $_POST['password'];
     require("connect-db.php");
 
+
+
     $sql = "SELECT password FROM accounts WHERE accounts.username = '$username' LIMIT 1;";
     $result = mysqli_query($mysqli, $sql);
     $resultCheck = mysqli_num_rows($result);
@@ -12,13 +14,15 @@ function authenticate(){ //auth via db
         echo $row['username'] . '<br/>';
       }
     }
+
     $sql = "SELECT 1 FROM accounts WHERE accounts.username = '$username' LIMIT 1;";
 
     if ((mysqli_query($mysqli, $sql)) ){
-      //if (password_verify($password, $password)){ //change second to dbpassword && mysqli_num_rows(mysqli_query($mysqli, $sql)) != 0)
       return true;
-      //}
+   
     }
+
+
     echo '<script type="text/javascript">document.getElementById("login_error").style.display = "block";</script>';
     return false; 
   } 

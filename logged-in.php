@@ -1,8 +1,17 @@
 <?php require('header.php');
 ini_set('display_errors', 1);
-require_once 'connect-db.php';   
+require_once 'connect-db.php'; 
 ?>
-
+<style>
+input[type=button], input[type=submit], input[type=reset]{
+background:none!important;
+     color:#3187D2;
+     border:none; 
+     padding:0!important;
+     font: inherit;
+     cursor: pointer;
+}
+</style>
 <main>
 <div class="container">
     <div class="row dashboard ">
@@ -21,19 +30,34 @@ require_once 'connect-db.php';
                 </thead>
                 <tbody id="sounds">
                     <?php
-                    $sql = "SELECT name, type, genre, tags, timestamp, username FROM sounds ORDER BY timestamp"; 
+                    $sql = "SELECT id, name, type, genre, tags, timestamp, username, file FROM sounds ORDER BY timestamp"; 
                     if ($result = mysqli_query($mysqli, $sql)){
                         while($row = mysqli_fetch_array($result)){
                             echo "<tr>";
-                            echo "<td>" . $row["name"] . "</td>";
+   echo "<td>   <form method='post' action='download.php'>
+        <input type='hidden' name='id' value=" . $row["id"] . ">
+
+        <input type='submit' name='action' value=" . $row["name"] . "> </form></td>";
                             echo "<td>" . $row["type"] . "</td>";
                             echo "<td>" . $row["genre"] . "</td>";
                             echo "<td>" . $row["tags"] . "</td>";
                             echo "<td>" . $row["timestamp"] . "</td>";
                             echo "<td>" . $row["username"] . "</td>";
+
+           
+
+
+
+
+
                             echo "</tr>";
                         }
                     } else { echo "Database cannot be loaded at this current time";}
+
+
+
+
+                    
                     ?>
                 </tbody>
             </table>

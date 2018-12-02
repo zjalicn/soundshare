@@ -8,7 +8,7 @@
         $name = $_POST['name'];
         $genre = $_POST['genre'];
         $tags = str_replace(","," ",$_POST['tags']); //removes all commas and replaces it with spaces
-        $collabs = str_replace(","," ",$_POST['collabInput']); //removes all commas and replaces it with spaces
+        $collabs = $_SESSION['username'] . " " . str_replace(","," ",$_POST['collabInput']); //removes all commas and replaces it with spaces
        
         $sql = "
         INSERT INTO soundbanks(name, id, genre, tags, users) 
@@ -136,7 +136,7 @@
                                             } elseif ($row['status']==2) {
                                                 echo "<td>
                                                         <form method='post'>
-                                                        <button type='accept-friend-".$row['id']."' name='accept-friend-".$row['id']."' class='btn-sml btn-primary'>Accept".$row['id']."</button>
+                                                        <button type='accept-friend-".$row['id']."' name='accept-friend-".$row['id']."' class='btn-sml btn-primary'>Accept</button>
                                                         </form>
                                                         </td>"; 
                                             } else {
